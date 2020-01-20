@@ -1,0 +1,13 @@
+# En este script se bajan 5 secuencias de Delfin y se señalan las veces que existe en cada secuencia, la secuencia "TGCA"
+
+#Bajamos las secuencias 1 por 1 
+curl -s "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nucleotide&rettype=fasta&id=599148615" > sec1.txt
+curl -s "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nucleotide&rettype=fasta&id=61744191" > sec2.txt
+curl -s "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nucleotide&rettype=fasta&id=259803955" > sec3.txt
+curl -s "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nucleotide&rettype=fasta&id=259803946" > sec4.txt
+curl -s "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nucleotide&rettype=fasta&id=259803929" > sec5.txt
+
+#Ahora hacemos un loop para que nos cuente las veces que la secuencia "TGCA" aparece en cada una de ellas
+for i in sec1.txt sec2.txt  sec3.txt sec4.txt sec5.txt; do
+grep -c  "TGCA" $i
+done
